@@ -1,0 +1,40 @@
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'maven-publish'
+    repositories {
+        mavenLocal()
+        // Add any other repositories you need (e.g., Maven Central)
+    }
+
+    group 'org.example'
+    version '1.0-SNAPSHOT'
+
+    dependencies {
+        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+    }
+
+    publishing {
+        publications {
+            common(MavenPublication) {
+                from components.java
+            }
+
+            web(MavenPublication) {
+                from components.java
+            }
+
+            api(MavenPublication) {
+                from components.java
+            }
+
+            mobile(MavenPublication) {
+                from components.java
+            }
+
+            legacy(MavenPublication) {
+                from components.java
+            }
+        }
+    }
+}
